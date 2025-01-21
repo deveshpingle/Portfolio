@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - dev/Portfolio
   pull_request:
     branches:
-      - main
+      - dev/Portfolio
 
 jobs:
   build:
