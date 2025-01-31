@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
+const serviceId = import.meta.env.VITE_SERVICE_ID;
+const templateId = import.meta.env.VITE_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 const variants = {
   initial: {
@@ -29,21 +32,21 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // emailjs
-    //   .sendForm(
-    //     "service_94y20xo",
-    //     "template_v10u2oh",
-    //     formRef.current,
-    //     "pX_2hasGmGcuvjXIW"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       setSuccess(true)
-    //     },
-    //     (error) => {
-    //       setError(true);
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        serviceId,
+        templateId,
+        formRef.current,
+        publicKey,
+      )
+      .then(
+        (result) => {
+          setSuccess(true)
+        },
+        (error) => {
+          setError(true);
+        }
+      );
   };
 
   return (
